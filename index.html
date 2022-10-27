@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List - With Boostrap and JQuery</title>
+
+    <!-- bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/style.css">
+  </head>
+  <body>
+    <nav class="navbar bg-dark text-light">
+      <div class="container-fluid">
+        <h1 class="m-auto py-2 display-3">To-do List</h1>
+      </div>
+    </nav>
+    <div
+      class="container bg-light text-dark py-5 d-flex justify-content-center"
+    >
+      <div
+        class="bg-white border border-dark w-75 py-3 px-4 rounded-1 row"
+      >
+      <div class="col-8">
+        <div class="input-group">
+          <input
+            type="text"
+            class="form-control form-control-lg"
+            placeholder="Digite uma tarefa.."
+            aria-label="Digite uma tarefa"
+            aria-describedby="basic-addon2"
+          />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="input-group">
+          <select class="form-select form-select-lg" id="inputGroupSelect01" required>
+            <option selected disabled value="">Categoria...</option>
+            <option value="1">Trabalho</option>
+            <option value="2">Lazer</option>
+            <option value="3">Educação</option>
+          </select>
+        </div>
+      </div>
+        <div class="col-12 d-flex justify-content-start pt-3">
+          <button
+            class="btn btn-secondary w-25 mt-2"
+            type="button"
+            id="button-addon2"
+          >
+            Adicionar
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="container bg-light pb-5">
+      <div class="row p-5">
+        <div class="col-12 d-flex justify-content-center gap-2">
+          <select class="form-select form-select-sm w-50" aria-label="Default select example">
+            <option selected value="0">Todos</option>
+            <option value="1">Trabalho</option>
+            <option value="2">Lazer</option>
+            <option value="3">Educação</option>
+          </select>
+          <button
+            class="btn btn-outline-primary w-25"
+            type="button"
+            id="button-addon2"
+          >
+            Filtrar
+          </button>
+        </div>
+      </div>
+      <!--  -->
+      <ul class="list-group w-75 m-auto">
+
+        <!--  -->
+        <li class="list-group-item d-flex justify-content-between align-items-center gap-2">
+          <div class="ms-2 me-auto py-3">    
+           Nenhuma Tarefa cadastrada!
+          </div>
+        </li>
+        <!--  -->
+
+        <li class="list-group-item d-flex justify-content-between align-items-center gap-2">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">Categoria</div>
+            Descriçao da Tarefa
+          </div>
+          <input class="form-check-input me-2" type="checkbox" value="" id="firstCheckbox">
+          <a href="#" class="btn btn-danger">Apagar</a>
+        </li>
+        
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-dark w-100">
+      <div class="container text-light d-flex justify-content-center py-3">
+        <h6>
+          Desenvolvido por 
+          <small class="text-muted">A. Carlos</small>
+        </h6>
+      </div>
+    </footer>
+
+    <!-- script jquery - google -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
