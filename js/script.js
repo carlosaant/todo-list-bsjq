@@ -1,22 +1,60 @@
 'use strict';
 
 let _tarefas = [];
-const _tarefa = {
-  descricao: '',
-  id_categoria: ''
-};
+const categorias = ['Trabalho', 'Lazer', 'Educação'];
 
 document.addEventListener('DOMContentLoaded', function (event) {
   $('#button-add-tarefa').click(() => {
-    let texto_tarefa = $('#inp_text_tarefa').val().trim();
-    let value_categoria = $('#inp_sel_categoria').val().trim();
-    _tarefa.descricao = texto_tarefa;
-    _tarefa.id_categoria = value_categoria;
-    _tarefas.unshift(_tarefa);
-
-    console.log(_tarefas);
+    if ($('#inp_text_tarefa').val().trim() === '') {
+      console.log('Necessario informar uma descriçao');
+    } else if ($('#inp_sel_categoria').val() == null) {
+      console.log('Necessario informar uma categoria');
+    } else {
+      const texto_tarefa = $('#inp_text_tarefa').val().trim();
+      const value_categoria = $('#inp_sel_categoria').val();
+      adicionarNovaTarefa(texto_tarefa, value_categoria);
+    }
   });
 });
+
+function adicionarNovaTarefa(texto_tarefa, id_categoria) {
+  const nova_tarefa = {
+    id: Date.now(),
+    descricao: texto_tarefa,
+    categoria_id: id_categoria,
+    checked: false
+  };
+  _tarefas.unshift(nova_tarefa);
+
+  console.log(_tarefas);
+  criarElementoLi(_tarefas[0]);
+}
+
+//utilizar foreach apos o append do #listatarefas, quando for carregar as tarefas
+function criarElementoLi(tarefa) {
+  $('#listaTarefas').append(
+    $('<li/>', {
+      class:
+        'list-group-item d-flex justify-content-between align-items-center gap-2'
+    })
+      .append(
+        $('<div/>', {
+          class: 'ms-2 me-auto'
+        })
+          .append(
+            $('<div/>', {
+              class: 'fw-bold',
+              text: categorias[tarefa.categoria_id - 1]
+            })
+          )
+          .append(tarefa.descricao)
+      )
+      .append(
+        $('<input />', { class: 'form-check-input me-2', type: 'checkbox' })
+      )
+      .append($('<a />', { class: 'btn btn-danger', text: 'Apagar' }))
+  );
+}
 
 function setLocalSt(arrTarefas) {
   localStorage.setItem('tarefas-todo', JSON.stringify(arrTarefas));
