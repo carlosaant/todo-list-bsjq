@@ -1,7 +1,7 @@
 'use strict';
 
 let _tarefas = [];
-const categorias = ['Trabalho', 'Lazer', 'Educação'];
+const categorias = ['todos', 'Trabalho', 'Lazer', 'Educação'];
 
 document.addEventListener('DOMContentLoaded', function (event) {
   verificarTarefas();
@@ -47,7 +47,7 @@ function criarElementoLi(tarefa) {
           .append(
             $('<div/>', {
               class: 'fw-bold',
-              text: categorias[tarefa.categoria_id - 1]
+              text: categorias[tarefa.categoria_id]
             })
           )
           .append(tarefa.descricao)
