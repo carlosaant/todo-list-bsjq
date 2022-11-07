@@ -4,10 +4,7 @@ let _tarefas = [];
 const categorias = ['Trabalho', 'Lazer', 'Educação'];
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  if (_tarefas.length === 0) {
-    $('#listaTarefas').append(tarefasVazias());
-  }
-
+  verificarTarefas();
   $('#button-add-tarefa').click(() => {
     if ($('#inp_text_tarefa').val().trim() === '') {
       console.log('Necessario informar uma descriçao');
@@ -29,6 +26,7 @@ function adicionarNovaTarefa(texto_tarefa, id_categoria) {
     checked: false
   };
   _tarefas.unshift(nova_tarefa);
+  verificarTarefas();
 
   console.log(_tarefas);
   criarElementoLi(_tarefas[0]);
@@ -77,16 +75,26 @@ function criarElementoLi(tarefa) {
 
 function checkTarefa(id_tarefa) {
   console.log(id_tarefa);
+  $('#' + id_tarefa).toggleClass('bg-secondary text-light');
 }
 
 function apagarTarefa(id_tarefa) {
   $('#' + id_tarefa).remove();
 }
 
+function verificarTarefas() {
+  if (_tarefas.length === 0) {
+    $('#listaTarefas').append(tarefasVazias());
+  } else {
+    $('#telaTarefasVazias').remove();
+  }
+}
+
 function tarefasVazias() {
   return $('<li/>', {
     class:
-      'list-group-item d-flex justify-content-between align-items-center gap-2'
+      'list-group-item d-flex justify-content-between align-items-center gap-2',
+    id: 'telaTarefasVazias'
   }).append(
     $('<div/>', {
       class: 'ms-2 me-auto py-3',
