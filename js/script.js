@@ -79,7 +79,9 @@ function checkTarefa(id_tarefa) {
 }
 
 function apagarTarefa(id_tarefa) {
+  _tarefas = _tarefas.filter(item => item.id != id_tarefa);
   $('#' + id_tarefa).remove();
+  //gravar no localstorare novo array
 }
 
 function verificarTarefas() {
