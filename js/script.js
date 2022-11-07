@@ -32,7 +32,7 @@ function adicionarNovaTarefa(texto_tarefa, id_categoria) {
 
 //utilizar foreach apos o append do #listatarefas, quando for carregar as tarefas
 function criarElementoLi(tarefa) {
-  $('#listaTarefas').append(
+  $('#listaTarefas').prepend(
     $('<li/>', {
       class:
         'list-group-item d-flex justify-content-between align-items-center gap-2'
@@ -50,10 +50,19 @@ function criarElementoLi(tarefa) {
           .append(tarefa.descricao)
       )
       .append(
-        $('<input />', { class: 'form-check-input me-2', type: 'checkbox' })
+        $('<input />', {
+          class: 'form-check-input me-2',
+          type: 'checkbox',
+          checked: tarefa.checked ? true : false,
+          click: $.proxy(checkID, this, tarefa.id)
+        })
       )
       .append($('<a />', { class: 'btn btn-danger', text: 'Apagar' }))
   );
+}
+
+function checkID(id_tarefa) {
+  console.log(id_tarefa);
 }
 
 function setLocalSt(arrTarefas) {
