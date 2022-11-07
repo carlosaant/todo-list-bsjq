@@ -4,6 +4,10 @@ let _tarefas = [];
 const categorias = ['Trabalho', 'Lazer', 'Educação'];
 
 document.addEventListener('DOMContentLoaded', function (event) {
+  if (_tarefas.length === 0) {
+    $('#listaTarefas').append(tarefasVazias());
+  }
+
   $('#button-add-tarefa').click(() => {
     if ($('#inp_text_tarefa').val().trim() === '') {
       console.log('Necessario informar uma descriçao');
@@ -77,6 +81,18 @@ function checkTarefa(id_tarefa) {
 
 function apagarTarefa(id_tarefa) {
   $('#' + id_tarefa).remove();
+}
+
+function tarefasVazias() {
+  return $('<li/>', {
+    class:
+      'list-group-item d-flex justify-content-between align-items-center gap-2'
+  }).append(
+    $('<div/>', {
+      class: 'ms-2 me-auto py-3',
+      text: 'Nenhuma Tarefa cadastrada!'
+    })
+  );
 }
 
 function setLocalSt(arrTarefas) {
