@@ -54,14 +54,14 @@ function criarElementoLi(tarefa) {
           class: 'form-check-input me-2',
           type: 'checkbox',
           checked: tarefa.checked ? true : false,
-          click: $.proxy(checkID, this, tarefa.id)
+          click: $.proxy(checkTarefa, this, tarefa.id)
         })
       )
       .append($('<a />', { class: 'btn btn-danger', text: 'Apagar' }))
   );
 }
 
-function checkID(id_tarefa) {
+function checkTarefa(id_tarefa) {
   console.log(id_tarefa);
 }
 
