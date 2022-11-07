@@ -35,7 +35,8 @@ function criarElementoLi(tarefa) {
   $('#listaTarefas').prepend(
     $('<li/>', {
       class:
-        'list-group-item d-flex justify-content-between align-items-center gap-2'
+        'list-group-item d-flex justify-content-between align-items-center gap-2',
+      id: tarefa.id
     })
       .append(
         $('<div/>', {
@@ -55,14 +56,27 @@ function criarElementoLi(tarefa) {
           type: 'checkbox',
           checked: tarefa.checked ? true : false,
           click: $.proxy(checkTarefa, this, tarefa.id)
+          // click: function () {
+          //   checkTarefa(tarefa.id);
+          // }
         })
       )
-      .append($('<a />', { class: 'btn btn-danger', text: 'Apagar' }))
+      .append(
+        $('<a />', {
+          class: 'btn btn-danger',
+          text: 'Apagar',
+          click: $.proxy(apagarTarefa, this, tarefa.id)
+        })
+      )
   );
 }
 
 function checkTarefa(id_tarefa) {
   console.log(id_tarefa);
+}
+
+function apagarTarefa(id_tarefa) {
+  $('#' + id_tarefa).remove();
 }
 
 function setLocalSt(arrTarefas) {
