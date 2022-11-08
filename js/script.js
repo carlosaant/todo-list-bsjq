@@ -6,6 +6,7 @@ const categorias = ['todos', 'Trabalho', 'Lazer', 'Educação'];
 document.addEventListener('DOMContentLoaded', function (event) {
   if (localStorage.getItem('tarefas-todobjq') != null) {
     carregarTarefas();
+    renderizarTarefasRecuperadas();
   } else {
     verificarTarefas();
   }
@@ -106,6 +107,11 @@ function tarefasVazias() {
       text: 'Nenhuma Tarefa cadastrada!'
     })
   );
+}
+
+function renderizarTarefasRecuperadas() {
+  verificarTarefas();
+  _tarefas.forEach(tarefa => criarElementoLi(tarefa));
 }
 
 function setLocalSt(arrTarefas) {
