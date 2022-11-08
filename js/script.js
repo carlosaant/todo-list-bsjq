@@ -30,9 +30,8 @@ function adicionarNovaTarefa(texto_tarefa, id_categoria) {
     checked: false
   };
   _tarefas.unshift(nova_tarefa);
+  setLocalSt(_tarefas);
   verificarTarefas();
-
-  console.log(_tarefas);
   criarElementoLi(_tarefas[0]);
 }
 
@@ -76,15 +75,16 @@ function criarElementoLi(tarefa) {
 
 function checkTarefa(id_tarefa) {
   _tarefas.find(tarefa => tarefa.id === id_tarefa).checked = this.checked;
-  //gravar no localstorage
+  setLocalSt(_tarefas);
   $('#' + id_tarefa).toggleClass('border border-danger');
 }
 
 function apagarTarefa(id_tarefa) {
+  //adicionar confimaçao de exclusão
   _tarefas = _tarefas.filter(item => item.id != id_tarefa);
   $('#' + id_tarefa).remove();
-  //gravar no localstorare novo array
   verificarTarefas();
+  setLocalSt(_tarefas);
 }
 
 function verificarTarefas() {
