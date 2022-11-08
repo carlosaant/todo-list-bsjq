@@ -3,7 +3,33 @@
 let _tarefas = [];
 const categorias = ['todos', 'Trabalho', 'Lazer', 'Educação'];
 
-document.addEventListener('DOMContentLoaded', function (event) {
+(function () {
+  'use strict';
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  let forms = $('#formTarefas');
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener(
+      'submit',
+      function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        } else {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+
+        form.classList.add('was-validated');
+      },
+      false
+    );
+  });
+})();
+
+$(document).ready(function () {
   if (localStorage.getItem('tarefas-todobjq') != null) {
     carregarTarefas();
     renderizarTarefasRecuperadas();
@@ -12,12 +38,14 @@ document.addEventListener('DOMContentLoaded', function (event) {
   }
   $('#button-add-tarefa').click(() => {
     if ($('#inp_text_tarefa').val().trim() === '') {
-      console.log('Necessario informar uma descriçao');
+      $('#inp_text_tarefa').empty().focus();
     } else if ($('#inp_sel_categoria').val() == null) {
-      console.log('Necessario informar uma categoria');
+      $('#inp_sel_categoria').focus();
     } else {
       const texto_tarefa = $('#inp_text_tarefa').val().trim();
       const value_categoria = $('#inp_sel_categoria').val();
+      $('#inp_text_tarefa').val('');
+      $('#inp_sel_categoria').prop('selectedIndex', 0);
       adicionarNovaTarefa(texto_tarefa, value_categoria);
     }
   });
