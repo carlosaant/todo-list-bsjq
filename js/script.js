@@ -3,32 +3,6 @@
 let _tarefas = [];
 const categorias = ['todos', 'Trabalho', 'Lazer', 'Educação'];
 
-(function () {
-  'use strict';
-
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  let forms = $('#formTarefas');
-
-  // Loop over them and prevent submission
-  Array.prototype.slice.call(forms).forEach(function (form) {
-    form.addEventListener(
-      'submit',
-      function (event) {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        } else {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-
-        form.classList.add('was-validated');
-      },
-      false
-    );
-  });
-})();
-
 $(document).ready(function () {
   if (localStorage.getItem('tarefas-todobjq') != null) {
     carregarTarefas();
@@ -36,7 +10,12 @@ $(document).ready(function () {
   } else {
     verificarTarefas(_tarefas);
   }
+
+  $('#formTarefas').submit(event => {
+    event.preventDefault();
+  });
   $('#button-add-tarefa').click(() => {
+    $('#formTarefas').addClass('was-validated');
     if ($('#inp_text_tarefa').val().trim() === '') {
       $('#inp_text_tarefa').empty().focus();
     } else if ($('#inp_sel_categoria').val() == null) {
