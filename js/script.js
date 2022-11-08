@@ -118,11 +118,15 @@ function renderizarTarefasRecuperadas() {
 }
 
 function filterTarefas(id_categoria) {
-  let _filter_tarefas = _tarefas.filter(
-    tarefa => tarefa.categoria_id == id_categoria
-  );
-  $('#listaTarefas').empty();
-  _filter_tarefas.forEach(tarefa => criarElementoLi(tarefa));
+  if (id_categoria != 0) {
+    let _filter_tarefas = _tarefas.filter(
+      tarefa => tarefa.categoria_id == id_categoria
+    );
+    $('#listaTarefas').empty();
+    _filter_tarefas.forEach(tarefa => criarElementoLi(tarefa));
+  } else {
+    _tarefas.forEach(tarefa => criarElementoLi(tarefa));
+  }
 }
 
 function setLocalSt(arrTarefas) {
