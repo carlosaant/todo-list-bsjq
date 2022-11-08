@@ -117,6 +117,14 @@ function renderizarTarefasRecuperadas() {
   _tarefas.forEach(tarefa => criarElementoLi(tarefa));
 }
 
+function filterTarefas(id_categoria) {
+  let _filter_tarefas = _tarefas.filter(
+    tarefa => tarefa.categoria_id == id_categoria
+  );
+  $('#listaTarefas').empty();
+  _filter_tarefas.forEach(tarefa => criarElementoLi(tarefa));
+}
+
 function setLocalSt(arrTarefas) {
   localStorage.setItem('tarefas-todobjq', JSON.stringify(arrTarefas));
 }
