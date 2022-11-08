@@ -72,6 +72,9 @@ function criarElementoLi(tarefa) {
         })
       )
   );
+  if (tarefa.checked) {
+    $('#' + tarefa.id).addClass('border border-danger');
+  }
 }
 
 function checkTarefa(id_tarefa) {
