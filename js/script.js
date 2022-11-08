@@ -58,9 +58,6 @@ function criarElementoLi(tarefa) {
           type: 'checkbox',
           checked: tarefa.checked ? true : false,
           click: $.proxy(checkTarefa, this, tarefa.id)
-          // click: function () {
-          //   checkTarefa(tarefa.id);
-          // }
         })
       )
       .append(
@@ -74,20 +71,22 @@ function criarElementoLi(tarefa) {
 }
 
 function checkTarefa(id_tarefa) {
-  console.log(id_tarefa);
-  $('#' + id_tarefa).toggleClass('bg-secondary text-light');
+  _tarefas.find(tarefa => tarefa.id === id_tarefa).checked = this.checked;
+  //gravar no localstorage
+  $('#' + id_tarefa).toggleClass('border border-danger');
 }
 
 function apagarTarefa(id_tarefa) {
   _tarefas = _tarefas.filter(item => item.id != id_tarefa);
   $('#' + id_tarefa).remove();
   //gravar no localstorare novo array
+  verificarTarefas();
 }
 
 function verificarTarefas() {
   if (_tarefas.length === 0) {
     $('#listaTarefas').append(tarefasVazias());
-  } else {
+  } else if ($('#telaTarefasVazias')) {
     $('#telaTarefasVazias').remove();
   }
 }
@@ -106,5 +105,5 @@ function tarefasVazias() {
 }
 
 function setLocalSt(arrTarefas) {
-  localStorage.setItem('tarefas-todo', JSON.stringify(arrTarefas));
+  localStorage.setItem('tarefas-todobjq', JSON.stringify(arrTarefas));
 }
