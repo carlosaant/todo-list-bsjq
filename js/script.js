@@ -25,6 +25,7 @@ $(document).ready(function () {
       const value_categoria = $('#inp_sel_categoria').val();
       $('#inp_text_tarefa').val('');
       $('#inp_sel_categoria').prop('selectedIndex', 0);
+      $('#formTarefas').removeClass('was-validated');
       adicionarNovaTarefa(texto_tarefa, value_categoria);
     }
   });
