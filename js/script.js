@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function (event) {
     carregarTarefas();
     renderizarTarefasRecuperadas();
   } else {
-    verificarTarefas();
+    verificarTarefas(_tarefas);
   }
   $('#button-add-tarefa').click(() => {
     if ($('#inp_text_tarefa').val().trim() === '') {
@@ -19,6 +19,13 @@ document.addEventListener('DOMContentLoaded', function (event) {
       const texto_tarefa = $('#inp_text_tarefa').val().trim();
       const value_categoria = $('#inp_sel_categoria').val();
       adicionarNovaTarefa(texto_tarefa, value_categoria);
+    }
+  });
+
+  $('#button-filter-tarefa').click(() => {
+    if (_tarefas.length != 0) {
+      let id_categoria = $('#inp_sel_filter_categoria').val();
+      filterTarefas(id_categoria);
     }
   });
 });
@@ -32,7 +39,7 @@ function adicionarNovaTarefa(texto_tarefa, id_categoria) {
   };
   _tarefas.unshift(nova_tarefa);
   setLocalSt(_tarefas);
-  verificarTarefas();
+  verificarTarefas(_tarefas);
   criarElementoLi(_tarefas[0]);
 }
 
@@ -87,12 +94,12 @@ function apagarTarefa(id_tarefa) {
   //adicionar confimaçao de exclusão
   _tarefas = _tarefas.filter(item => item.id != id_tarefa);
   $('#' + id_tarefa).remove();
-  verificarTarefas();
+  verificarTarefas(_tarefas);
   setLocalSt(_tarefas);
 }
 
-function verificarTarefas() {
-  if (_tarefas.length === 0) {
+function verificarTarefas(arrayTarefas) {
+  if (arrayTarefas.length === 0) {
     $('#listaTarefas').append(tarefasVazias());
   } else if ($('#telaTarefasVazias')) {
     $('#telaTarefasVazias').remove();
@@ -113,7 +120,7 @@ function tarefasVazias() {
 }
 
 function renderizarTarefasRecuperadas() {
-  verificarTarefas();
+  verificarTarefas(_tarefas);
   _tarefas.forEach(tarefa => criarElementoLi(tarefa));
 }
 
@@ -122,9 +129,15 @@ function filterTarefas(id_categoria) {
     let _filter_tarefas = _tarefas.filter(
       tarefa => tarefa.categoria_id == id_categoria
     );
-    $('#listaTarefas').empty();
-    _filter_tarefas.forEach(tarefa => criarElementoLi(tarefa));
+    if (_filter_tarefas.length != 0) {
+      $('#listaTarefas').empty();
+      _filter_tarefas.forEach(tarefa => criarElementoLi(tarefa));
+    } else {
+      $('#listaTarefas').empty();
+      verificarTarefas(_filter_tarefas);
+    }
   } else {
+    $('#listaTarefas').empty();
     _tarefas.forEach(tarefa => criarElementoLi(tarefa));
   }
 }
