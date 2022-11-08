@@ -4,7 +4,11 @@ let _tarefas = [];
 const categorias = ['todos', 'Trabalho', 'Lazer', 'Educação'];
 
 document.addEventListener('DOMContentLoaded', function (event) {
-  verificarTarefas();
+  if (localStorage.getItem('tarefas-todobjq') != null) {
+    carregarTarefas();
+  } else {
+    verificarTarefas();
+  }
   $('#button-add-tarefa').click(() => {
     if ($('#inp_text_tarefa').val().trim() === '') {
       console.log('Necessario informar uma descriçao');
@@ -106,4 +110,7 @@ function tarefasVazias() {
 
 function setLocalSt(arrTarefas) {
   localStorage.setItem('tarefas-todobjq', JSON.stringify(arrTarefas));
+}
+function carregarTarefas() {
+  _tarefas = JSON.parse(localStorage.getItem('tarefas-todobjq'));
 }
