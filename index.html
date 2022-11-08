@@ -13,44 +13,47 @@
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
     <nav class="navbar bg-dark text-light">
-      <div class="container-fluid">
+      <div class="container-fluid flex-column">
         <h1 class="m-auto py-2 display-3">To-do List</h1>
+        <h6 class="text-muted">Boostrap & JQuery</h6>
       </div>
     </nav>
     <div
       class="container bg-light text-dark py-5 d-flex justify-content-center"
     >
-      <div
-        class="bg-white border border-dark w-75 py-3 px-4 rounded-1 row"
-      >
-      <div class="col-8">
-        <div class="input-group">
-          <input
-            type="text"
-            id="inp_text_tarefa"
-            class="form-control form-control-lg"
-            placeholder="Digite uma tarefa.."
-            aria-label="Digite uma tarefa"
-          />
+      <div class="bg-white border border-dark w-75 py-3 px-4 rounded-1 row">
+        <div class="col-8">
+          <div class="input-group">
+            <input
+              type="text"
+              id="inp_text_tarefa"
+              class="form-control form-control-lg"
+              placeholder="Digite uma tarefa.."
+              aria-label="Digite uma tarefa"
+            />
+          </div>
         </div>
-      </div>
-      <div class="col-4">
-        <div class="input-group">
-          <select class="form-select form-select-lg" id="inp_sel_categoria" required>
-            <option selected disabled value="">Categoria...</option>
-            <option value="1">Trabalho</option>
-            <option value="2">Lazer</option>
-            <option value="3">Educação</option>
-          </select>
+        <div class="col-4">
+          <div class="input-group">
+            <select
+              class="form-select form-select-lg"
+              id="inp_sel_categoria"
+              required
+            >
+              <option selected disabled value="">Categoria...</option>
+              <option value="1">Trabalho</option>
+              <option value="2">Lazer</option>
+              <option value="3">Educação</option>
+            </select>
+          </div>
         </div>
-      </div>
         <div class="col-12 d-flex justify-content-start pt-3">
           <button
-            class="btn btn-success w-25 mt-2"
+            class="btn btn-outline-success w-25 mt-2"
             type="button"
             id="button-add-tarefa"
           >
@@ -63,7 +66,10 @@
     <div class="container bg-light pb-5">
       <div class="row p-5">
         <div class="col-12 d-flex justify-content-center gap-2">
-          <select class="form-select form-select-sm w-50" aria-label="Default select example">
+          <select
+            class="form-select form-select-sm w-50"
+            aria-label="Default select example"
+          >
             <option selected value="0">Todos</option>
             <option value="1">Trabalho</option>
             <option value="2">Lazer</option>
@@ -79,8 +85,7 @@
         </div>
       </div>
       <!--  -->
-      <ul id="listaTarefas" class="list-group w-75 m-auto">
-
+      <ul id="listaTarefas" class="list-group w-75 m-auto pb-5">
         <!--  -->
         <!-- <li class="list-group-item d-flex justify-content-between align-items-center gap-2">
           <div class="ms-2 me-auto py-3">    
@@ -88,7 +93,7 @@
           </div>
         </li> -->
         <!--  -->
-<!-- 
+        <!-- 
         <li class="list-group-item d-flex justify-content-between align-items-center gap-2">
           <div class="ms-2 me-auto">
             <div class="fw-bold">Categoria</div>
@@ -97,15 +102,14 @@
           <input class="form-check-input me-2" type="checkbox" value="" id="firstCheckbox">
           <a href="#" class="btn btn-danger">Apagar</a>
         </li> -->
-        
-      </div>
+      </ul>
     </div>
 
     <!-- footer -->
     <footer class="bg-dark w-100">
       <div class="container text-light d-flex justify-content-center py-3">
         <h6>
-          Desenvolvido por 
+          Desenvolvido por
           <small class="text-muted">A. Carlos</small>
         </h6>
       </div>
