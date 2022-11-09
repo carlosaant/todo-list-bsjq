@@ -73,10 +73,10 @@
     </div>
     <!--  -->
     <div class="container bg-light pb-5">
-      <div class="row p-5">
-        <div class="col-12 d-flex justify-content-center gap-2">
+      <div class="row p-5 mx-md-5 gap-3 gap-md-0">
+        <div class="col-md-8 d-flex">
           <select
-            class="form-select form-select-sm w-50"
+            class="form-select form-select-sm"
             id="inp_sel_filter_categoria"
             aria-label="Default select example"
           >
@@ -85,8 +85,10 @@
             <option value="2">Lazer</option>
             <option value="3">Educação</option>
           </select>
+        </div>
+        <div class="col-md-4 d-flex">
           <button
-            class="btn btn-outline-primary w-25"
+            class="btn btn-outline-primary w-100"
             type="button"
             id="button-filter-tarefa"
           >
@@ -95,7 +97,7 @@
         </div>
       </div>
       <!--  -->
-      <ul id="listaTarefas" class="list-group w-75 m-auto pb-5"></ul>
+      <ul id="listaTarefas" class="list-group col-12 m-auto pb-5 px-md-5"></ul>
     </div>
 
     <!-- footer -->
