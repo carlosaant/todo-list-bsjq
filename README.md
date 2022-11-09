@@ -2,13 +2,15 @@
 
 Pagina de gerenciamento de tarefas, modelo listagem.
 
-## 💻 Tecnologias e Funcionalidades:
+## 💻 Tecnologias:
 
 - HTML
 - CSS
 - Js
 - Bootstrap
 - JQuery
+
+## Funcionalidades
 
 - Armazenamento em LocalStorage
 - Filtragem de tarefas por categorias
@@ -18,4 +20,4 @@ Pagina de gerenciamento de tarefas, modelo listagem.
 
 ## 🚀 Acessando <To-Do List with Bootstrap & JQuery>
 
-Acesse o Projeto [TodoList](https://#)
+Acesse o Projeto [TodoList-Bootstrap & JQuery](https://carlosaant.github.io/todo-list-bsjq/)
